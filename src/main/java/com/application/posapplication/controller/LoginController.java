@@ -21,7 +21,7 @@ public class LoginController {
     @RequestMapping("/login")
     public String login(){
     //        model.addAttribute("title", "a");
-        return "login";
+        return "/login";
     }
 
     @RequestMapping("/login/submit")
