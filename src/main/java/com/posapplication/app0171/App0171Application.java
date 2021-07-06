@@ -1,21 +1,12 @@
 package com.posapplication.app0171;
 
+import com.application.posapplication.PosApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
 
-@SpringBootApplication
-@RestController
 public class App0171Application {
 
-    @GetMapping("/message")
-    public String message(){
-        return "Text return.";
-    }
-
-
     public static void main(String[] args) {
-        SpringApplication.run(App0171Application.class, args);
+        SpringApplication.run(PosApplication.class, args);
     }
 
 }
