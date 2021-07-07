@@ -18,8 +18,7 @@ public class RegisterController {
     public @ResponseBody UserResponse registerSubmit(HttpServletRequest req, @RequestParam(value="email")String email, @RequestParam(value="password")String password, @RequestParam(value="name")String name){
 
         try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;"+
-                    "databaseName=DatabaseCapstone;user=sa;password=123456;");
+            Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             String tableName = "aUserTable";
             Statement stmt = conn.createStatement();
 
