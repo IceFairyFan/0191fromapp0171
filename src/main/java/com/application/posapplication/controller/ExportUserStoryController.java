@@ -28,8 +28,7 @@ public class ExportUserStoryController {
 
         String excelFilePath = "MeetingExport.xlsx";
 
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;"+
-                "databaseName=DatabaseCapstone;user=sa;password=123456;");) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");) {
 
             String tableName = "dMeetingDetailsModalTable";
             String columnName = "MeetingID";
