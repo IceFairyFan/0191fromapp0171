@@ -98,7 +98,7 @@ public class  HomepageController {
     private void homepageInsertFunction(HttpServletRequest req, @RequestBody HomepageAddProjectModel hapm)
             throws SQLException{
         String tableName = "bProjectTable"; //kemungkinan ganti
-        Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;");
+        Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
         Statement stmt = conn.createStatement();
 
         String insertValue = "INSERT INTO " + tableName + " VALUES ('" +hapm.getId()+ "', '" + hapm.getProjectName() + "', '" + hapm.getCompanyName() + "', '" + hapm.getProjectDescription() + "', '2021-06-10', 'Somewhere', 'Pending')";
@@ -125,8 +125,7 @@ public class  HomepageController {
         ArrayList<HomepageAddProjectModel> hapmList = new ArrayList<>();
 
         try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;" +
-                    "databaseName=DatabaseCapstone;user=sa;password=123456;");
+            Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             String tableName = "bProjectTable";
             String columnName = "UserId";
 //            String userId = "1";
