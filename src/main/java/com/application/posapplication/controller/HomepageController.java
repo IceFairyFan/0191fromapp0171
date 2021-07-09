@@ -59,7 +59,7 @@ public class  HomepageController {
         try{
 
 
-            String dbURL = "jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;";
+            String dbURL = "jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
             conn = DriverManager.getConnection(dbURL);
 
             String tableName = "bProjectTable";
