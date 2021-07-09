@@ -19,14 +19,14 @@ import java.util.ArrayList;
 
 @Controller
 public class  HomepageController {
-    @RequestMapping(value = "/homepage")
+    @RequestMapping(value = "/Homepage.html")
     public String homepage(HttpServletRequest req){
 
         HttpSession session =   req.getSession(false);
         String username = (String) session.getAttribute("username");
 
         if(session != null){
-            return "homepage";
+            return "Homepage.html";
         }else{
             return "";
         }
