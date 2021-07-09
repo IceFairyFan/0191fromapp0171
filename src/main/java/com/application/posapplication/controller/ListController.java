@@ -15,13 +15,13 @@ import java.util.ArrayList;
 
 @Controller
 public class ListController {
-    @GetMapping("/Listuserstories.html")
+    @GetMapping("/ListUserStories.html")
     public String list(HttpServletRequest req){
         HttpSession session = req.getSession(false);
         String username = (String) session.getAttribute("username");
 
         if(session != null){
-            return "Listuserstories.html";
+            return "ListUserStories.html";
         }else{
             return "";
         }
