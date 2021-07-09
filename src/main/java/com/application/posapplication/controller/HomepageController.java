@@ -19,17 +19,17 @@ import java.util.ArrayList;
 
 @Controller
 public class  HomepageController {
-    @RequestMapping(value = "/homepage")
-    public String homepage(HttpServletRequest req){
+    @GetMapping(value = "/Homepage.html")
+    public String homepage(){
 
-        HttpSession session =   req.getSession(false);
-        String username = (String) session.getAttribute("username");
+//         HttpSession session =   req.getSession(false);
+//         String username = (String) session.getAttribute("username");
 
-        if(session != null){
-            return "homepage";
-        }else{
-            return "";
-        }
+//         if(session != null){
+            return "Homepage.html";
+ //       }else{
+//             return "";
+ //       }
     }
 
     @RequestMapping(value="/homepage/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

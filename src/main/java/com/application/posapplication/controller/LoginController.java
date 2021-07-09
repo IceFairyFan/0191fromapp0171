@@ -18,10 +18,10 @@ import java.util.ArrayList;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/login")
+    @GetMapping("/Login.html")
     public String login(){
     //        model.addAttribute("title", "a");
-        return "login";
+        return "Login.html";
     }
 
     @RequestMapping("/login/submit")

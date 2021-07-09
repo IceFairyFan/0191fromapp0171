@@ -9,9 +9,9 @@ import java.sql.*;
 
 @Controller
 public class RegisterController {
-    @RequestMapping("/register")
-    public String registerController(HttpServletRequest req){
-        return "register";
+    @GetMapping("/Register.html")
+    public String registerController(){
+        return "Register.html";
     }
 
     @RequestMapping(value = "/register/post", method = RequestMethod.POST)
