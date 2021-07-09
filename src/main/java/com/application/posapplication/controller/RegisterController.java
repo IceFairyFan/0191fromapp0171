@@ -9,7 +9,7 @@ import java.sql.*;
 
 @Controller
 public class RegisterController {
-    @RequestMapping("/Register.html")
+    @GetMapping("/Register.html")
     public String registerController(HttpServletRequest req){
         return "Register.html";
     }
