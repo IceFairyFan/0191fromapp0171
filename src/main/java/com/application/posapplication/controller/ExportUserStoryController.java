@@ -16,11 +16,11 @@ import java.sql.*;
 
 @Controller
 public class ExportUserStoryController {
-    @RequestMapping("/Exportuserstory.html")
+    @RequestMapping("/ExportUserSgit addtory.html")
     public String exportUserStory(@RequestParam(value="id")String id) {
 
         export(id);
-        return "Exportuserstory.html";
+        return "ExportUserStory.html";
     }
 
     @RequestMapping("/exportuserstory/export")
