@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 public class ProjectDetailFourController {
-    @RequestMapping("/Projectdetail4.html")
+    @GetMapping("/Projectdetail4.html")
     public String projectdetailfour(HttpServletRequest req) throws InterruptedException, ExecutionException, SQLException{
         HttpSession session = req.getSession(false);
         String username = (String) session.getAttribute("username");
