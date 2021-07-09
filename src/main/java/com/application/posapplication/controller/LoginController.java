@@ -38,7 +38,7 @@ public class LoginController {
 
             Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             String tableName = "aUserTable";
-             String email = "email";
+            String email = "email";
             String password = "password";
             String inputEmail = loginModel.getEmail();
             String inputPassword = loginModel.getPassword();
