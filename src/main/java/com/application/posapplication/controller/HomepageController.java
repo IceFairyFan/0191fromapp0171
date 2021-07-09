@@ -28,7 +28,7 @@ public class  HomepageController {
 //         if(session != null){
             return "Homepage.html";
  //       }else{
-            return "";
+//             return "";
  //       }
     }
 
