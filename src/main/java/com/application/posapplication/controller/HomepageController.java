@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @Controller
 public class  HomepageController {
-    @RequestMapping(value = "/Homepage.html")
+    @GetMapping(value = "/Homepage.html")
     public String homepage(HttpServletRequest req){
 
         HttpSession session =   req.getSession(false);
