@@ -1,4 +1,5 @@
 rebuild-jar:
+	@rm -rf target/
 	@echo ">>> creating new jar executatble..."
 	@mvn clean package
 
