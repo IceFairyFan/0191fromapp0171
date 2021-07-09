@@ -16,7 +16,7 @@ import java.sql.*;
 
 @Controller
 public class ExportUserStoryController {
-    @RequestMapping("/ExportUserSgit addtory.html")
+    @RequestMapping("/ExportUserStory.html")
     public String exportUserStory(@RequestParam(value="id")String id) {
 
         export(id);
