@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 @Controller
 public class ListController {
-    @GetMapping("/ListUserStories.html")
+    @PostMapping("/ListUserStories.html")
     public String list(HttpServletRequest req){
         HttpSession session = req.getSession(false);
         String username = (String) session.getAttribute("username");
