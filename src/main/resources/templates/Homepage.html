@@ -38,15 +38,13 @@
                 success: function(tmpgetproj){
                     if(tmpgetproj.status){
                         var stringtmpproj = "";
-                        var varHomepageInt = 0;
-                        $.each(tmpgetproj.data, function(index, item){
-                            varHomepageInt = varHomepageInt + 1;
-                            stringtmpproj += "<tr><td scope='col' style='width: 25%'><button type='button' class='buttonclick' q='"+item.id+"' value='"+item.projectName+"'>"+item.projectName+"</button></td>" +
-                                "<td scope='col' style='width: 25%'>"+item.companyName+"</td>" +
-                                "<td scope='col' style='width: 50%'>"+item.projectDescription+"</td>"+
-                                "</tr>";
-                        });
-
+                            $.each(tmpgetproj.data, function (index, item) {
+                                stringtmpproj += "<tr><td scope='col' style='width: 25%'><button type='button' class='buttonclick' " +
+                                    "q='" + item.id + "' value='" + item.projectName + "'>" + item.projectName + "</button></td>" +
+                                    "<td scope='col' style='width: 25%'>" + item.companyName + "</td>" +
+                                    "<td scope='col' style='width: 50%'>" + item.projectDescription + "</td>" +
+                                    "</tr>";
+                                });
                         $("#list_project").replaceWith(stringtmpproj);
                     }
                 },
@@ -60,29 +58,18 @@
             });
 
             $('body').on('click', '.buttonclick', function(){
-                // $.each(hpid.data, function(index, item){
-                    // window.location.replace(window.location.origin+"/projectdetailfour?id="+item.id);
-                    window.location.replace(window.location.origin+"/Projectdetail4.html?id="+$(this).attr("q"));
-                // });
+
+                    window.location.replace(window.location.origin+"/ProjectDetail4.html?id="+$(this).attr("q"));
+
             });
 
             $("#btn_new_project-too").click(function(){
-                // var fd = new FormData();
-                // fd.append('projectName', $("#projectName").val());
-                // fd.append('companyName', $("#companyName").val());
-                // fd.append('projectDescription', $("#project_desc").val());
-                // fd.append('id', $.urlParam('id'));
                 var tmphomepage = {};
                 tmphomepage["projectName"] = $("#project_name").val();
                 tmphomepage["companyName"] = $("#company_name").val();
                 tmphomepage["projectDescription"] = $("#project_desc").val();
                 tmphomepage["id"] = $.urlParam('id'); // feeds the ID value, change it like the FormData
-                // tmphomepage["id"] = 0;
                 tmphomepage["homepageProjectID"] = "";
-                // var id = $.urlParam('id');
-                // var projectName = tmphomepage["projectName"];
-                // var companyName = tmphomepage["companyName"];
-                // var projectDescription = tmphomepage["projectDescription"];
                 $.ajax({
                     url: window.location.origin+'/homepage/post',
                     type: 'POST',
@@ -112,28 +99,6 @@
                         console.log("DONE");
                     }
                 });
-                // alert("Function is finished");
-                // $.ajax({
-                //     url: 'http://localhost:8080/homepage/posthomepage',
-                //     type: 'POST',
-                //     headers:{
-                //         'Accept' : 'application/json',
-                //         'Content-type' : 'application/json'
-                //     },
-                //     data: JSON.stringify(e),
-                //     datatype:'json',
-                //     success: function(ea){
-                //         // alert(tmph);
-                //         // alert("Everything went fine");
-                //     },
-                //     error : function(e){
-                //         console.log("ERROR", e);
-                //         alert("Something wrong");
-                //     },
-                //     done : function(e){
-                //         console.log("DONE");
-                //     }
-                // });
             });
         });
     </script>

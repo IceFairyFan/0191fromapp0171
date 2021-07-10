@@ -25,11 +25,9 @@
                     datatype:'json',
                     success: function(rimdata){
                         if(rimdata.status){
-                            var q = 0;
                             $.each(rimdata.data, function(index, item){
                                 window.location.replace(window.location.origin + "/Homepage.html?id=" + item.id);
                             });
-                            // window.location.replace(window.location.origin + "/homepage?id=" + q);
                         }else{
                             alert("You are not a valid user");
                         }
