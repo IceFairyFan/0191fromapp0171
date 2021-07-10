@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,11 +17,11 @@ import java.sql.*;
 
 @Controller
 public class ExportUserStoryController {
-    @RequestMapping("/Exportuserstory.html")
+    @PostMapping("/ExportUserStory.html")
     public String exportUserStory(@RequestParam(value="id")String id) {
 
         export(id);
-        return "Exportuserstory.html";
+        return "ExportUserStory.html";
     }
 
     @RequestMapping("/exportuserstory/export")

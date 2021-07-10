@@ -3,10 +3,7 @@ package com.application.posapplication.controller;
 import com.application.posapplication.model.ListUserStoriesModel;
 import com.application.posapplication.model.UserResponse;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,13 +12,13 @@ import java.util.ArrayList;
 
 @Controller
 public class ListController {
-    @GetMapping("/Listuserstories.html")
+    @PostMapping("/ListUserStories.html")
     public String list(HttpServletRequest req){
         HttpSession session = req.getSession(false);
         String username = (String) session.getAttribute("username");
 
         if(session != null){
-            return "Listuserstories.html";
+            return "ListUserStories.html";
         }else{
             return "";
         }

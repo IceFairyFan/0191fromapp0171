@@ -36,13 +36,13 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 public class ProjectDetailFourController {
-    @GetMapping("/Projectdetail4.html")
+    @PostMapping("/ProjectDetail4.html")
     public String projectdetailfour(HttpServletRequest req) throws InterruptedException, ExecutionException, SQLException{
         HttpSession session = req.getSession(false);
         String username = (String) session.getAttribute("username");
 
         if(session != null){
-            return "Projectdetail4.html";
+            return "ProjectDetail4.html";
         }else{
             return "";
         }
@@ -105,7 +105,7 @@ public class ProjectDetailFourController {
 
         Connection conn = null;
         try{
-            String dbURL = "jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;";
+            String dbURL = "jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
             conn = DriverManager.getConnection(dbURL);
 
             String folderName = "";
@@ -126,7 +126,7 @@ public class ProjectDetailFourController {
         String meetingId = "";
 
         String tableNameA = "cMeetingTable";
-        Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;");
+        Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
 //        Statement stmt = conn.createStatement();
 
 //        String insertValueA = "INSERT INTO " + tableNameA + " VALUES ('"+id+"', '" + title + "', '" + date + "', '" + multipartFile.getOriginalFilename() + "')";
@@ -177,7 +177,7 @@ public class ProjectDetailFourController {
     public void processInput(AtomicReference<String> text, String meetingId, String pdm) throws SQLException {
 
         String texta = text.toString();
-        Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;");
+        Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
         Statement stmt = conn.createStatement();
 
         String tableNameA = "dMeetingDetailsModalTable";

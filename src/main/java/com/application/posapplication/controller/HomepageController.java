@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @Controller
 public class  HomepageController {
-    @GetMapping(value = "/Homepage.html")
+    @PostMapping("/Homepage.html")
     public String homepage(){
 
 //         HttpSession session =   req.getSession(false);
@@ -59,7 +59,7 @@ public class  HomepageController {
         try{
 
 
-            String dbURL = "jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;";
+            String dbURL = "jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
             conn = DriverManager.getConnection(dbURL);
 
             String tableName = "bProjectTable";
@@ -132,21 +132,33 @@ public class  HomepageController {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE " + columnName + " ='" + userId + "' ");
             ResultSet results = stmt.executeQuery();
 
-            while(results.next()){
-                int projectId = results.getInt("ProjectID");
-                String projectName = results.getString("ProjectName");
-                String companyName = results.getString("ProjectCompanyName");
-                String projectDescription = results.getString("ProjectDesc");
-                String projectStatus = results.getString("ProjectStatus");
-                HomepageAddProjectModel hapmm = new HomepageAddProjectModel(projectId, projectName, companyName, projectDescription, projectStatus);
-
-                hapmList.add(hapmm);
-            }
+            HomepageAddProjectModel hapmm;
 
             UserResponse userResponse = new UserResponse();
-            userResponse.setStatus(true);
-            userResponse.setMessage("Data is found");
-            userResponse.setData(hapmList);
+
+            if(!results.wasNull()){
+                while(results.next()){
+                    int projectId = results.getInt("ProjectID");
+                    String projectName = results.getString("ProjectName");
+                    String companyName = results.getString("ProjectCompanyName");
+                    String projectDescription = results.getString("ProjectDesc");
+                    String projectStatus = results.getString("ProjectStatus");
+                    hapmm = new HomepageAddProjectModel(projectId, projectName, companyName, projectDescription, projectStatus);
+
+                    hapmList.add(hapmm);
+                }
+                userResponse.setStatus(true);
+                userResponse.setMessage("Data is found");
+                userResponse.setData(hapmList);
+
+            } else {
+                userResponse.setStatus(false);
+                userResponse.setMessage("Data is not found");
+
+            }
+
+
+
             return userResponse;
 
         }catch(SQLException e){
@@ -157,58 +169,4 @@ public class  HomepageController {
             return uResponse;
         }
     }
-
-//    @PostMapping("/posthomepage")
-//    public @ResponseBody UserResponse postHomepage(@RequestBody HomepagePageChangeModel hpcm, @RequestBody HomepageAddProjectModel hapm) {
-//        ArrayList<HomepagePageChangeModel> hpcmList = new ArrayList<>();
-//        String homepageProjectName = "test";
-//        String homepageProjectID = hpcm.getHomepageProjectID();
-//
-//        try{
-//
-//            String tableName = "bProjectTable";
-//            String columnName = "ProjectName";
-//            String projectName = hapm.getProjectName();
-//            String sqlQuery = "SELECT * FROM " +tableName+ " WHERE " +columnName+ " = '" +projectName+ "'";
-//
-//            Connection conn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-J6HCJ4JQ\\SQLEXPRESS:1433;databaseName=DatabaseCapstone;user=sa;password=123456;");
-//            PreparedStatement stmt = conn.prepareStatement(sqlQuery);
-//            ResultSet results = stmt.executeQuery();
-//
-//            while(results.next()){
-//                homepageProjectID = results.getString("ProjectID");
-//            }
-//
-//
-////        String homepageProjectName = hpcm.getHomepageProjectName();
-//
-//        HomepagePageChangeModel hpcmm = new HomepagePageChangeModel(homepageProjectName, homepageProjectID);
-//        hpcmList.add(hpcmm);
-//
-//            UserResponse userResponse = new UserResponse();
-//            userResponse.setStatus(true);
-//            userResponse.setMessage("Data is found");
-//            userResponse.setData(hpcmList);
-//            return userResponse;
-//
-//        }catch (Exception e){
-//
-//            e.printStackTrace();
-//            UserResponse userResponse = new UserResponse();
-//            userResponse.setStatus(false);
-//            userResponse.setMessage("Data not found");
-//            return userResponse;
-//
-//        }
-
-
-
-//        catch (SQLException e){
-//            e.printStackTrace();
-//            UserResponse userResponse = new UserResponse();
-//            userResponse.setStatus(false);
-//            userResponse.setMessage("SQL Error");
-//            return userResponse;
-//        }
-//    }
 }

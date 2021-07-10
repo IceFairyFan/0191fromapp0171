@@ -1,11 +1,14 @@
 package com.application.posapplication.controller;
 
+import com.application.posapplication.model.RegisterIntModel;
 import com.application.posapplication.model.UserResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.*;
+import java.util.ArrayList;
 
 @Controller
 public class RegisterController {
@@ -17,6 +20,8 @@ public class RegisterController {
     @RequestMapping(value = "/register/post", method = RequestMethod.POST)
     public @ResponseBody UserResponse registerSubmit(HttpServletRequest req, @RequestParam(value="email")String email, @RequestParam(value="password")String password, @RequestParam(value="name")String name){
 
+        ArrayList<RegisterIntModel> rimList = new ArrayList<>();
+
         try{
             Connection conn = DriverManager.getConnection("jdbc:sqlserver://databasecapstone.database.windows.net:1433;database=DatabaseCapstone;user=capstone@databasecapstone;password=P@ssw0rd;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             String tableName = "aUserTable";
@@ -27,8 +32,26 @@ public class RegisterController {
 
             stmt.execute(sqlQuery);
 
+            String columnName = "email";
+            String stringExtractName = "SELECT * FROM " +tableName+ " WHERE " +columnName+ " = '"+email+"';";
+
+            PreparedStatement statement2 = conn.prepareStatement(stringExtractName);
+            ResultSet resultTwo = statement2.executeQuery();
+            int ids = 0;
+            while (resultTwo.next()){
+                name = resultTwo.getString("Name");
+                ids = resultTwo.getInt("UserId");
+                RegisterIntModel rim = new RegisterIntModel(ids);
+                rimList.add(rim);
+            }
+
             UserResponse userResponse = new UserResponse();
             userResponse.setStatus(true);
+            userResponse.setData(rimList);
+
+            HttpSession session = req.getSession();
+            session.setAttribute("username", name);
+            session.setMaxInactiveInterval(900);
 
             return userResponse;
 

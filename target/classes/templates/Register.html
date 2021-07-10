@@ -33,6 +33,11 @@
                         contentType:false,
                         processData:false,
                         success: function(tmp){
+                            if(tmp.status){
+                                $.each(tmp.data, function(index, item){
+                                    window.location.replace(window.location.origin+"/Homepage.html?id="+item.id);
+                                });
+                            }
                             console.log(tmp);
                             alert("Data entered.");
                         },
@@ -65,7 +70,7 @@
                 <img src="assets/Logo.svg" alt="logo" class="logo">
             </div>
 
-            <form class="form-register" method="post" action="/register">
+            <form class="form-register">
                 <div class="title-register">Create Account</div>
                 <div class="register-action">
                     <h4>Full Name</h4>
@@ -87,11 +92,11 @@
                     <br>
                     <div class="btn-register">
                         <div class="inner"></div>
-                        <button type="submit" id="btn_register" onclick="location.href='Homepage.html';">Sign Up</button>
+                        <button type="button" id="btn_register">Sign Up</button>
                     </div>
                     <div class="login-entry">
                         <a>Already have an account?</a>
-                        <a href="/login" style="color:#06369A; text-decoration: none">Login now</a>
+                        <a href="/" style="color:#06369A; text-decoration: none">Login now</a>
                     </div>
                 </div>
             </form>

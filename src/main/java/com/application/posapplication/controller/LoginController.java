@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @Controller
 public class LoginController {
 
-    @GetMapping("/Login.html")
+    @GetMapping("/")
     public String login(){
     //        model.addAttribute("title", "a");
         return "Login.html";
@@ -60,16 +60,6 @@ public class LoginController {
                 RegisterIntModel rim = new RegisterIntModel(ids);
                 rimList.add(rim);
             }
-//            ObjectMapper om = new ObjectMapper();
-//            ModelAndView result = new ModelAndView();
-//
-//            result.addObject("rim", om.writeValueAsString(rim));
-
-//            model.addAttribute("Number", ids);
-//
-//            JSONObject item = new JSONObject();
-//            item.put("number", ids);
-
 
             while (results.next()){
                 isLogin = true;
